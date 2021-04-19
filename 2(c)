@@ -1,1 +1,5 @@
-
+Select DISTINCT m.LastName, m.FirstName, m.MemberID
+FROM Member m JOIN Entry e
+ON m.MemberID = e.MemberID
+where NOT EXISTS
+(Select * from Entry e where m.MemberID = e.MemberID AND e.Year = 2013);
