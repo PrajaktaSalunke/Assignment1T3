@@ -1,1 +1,6 @@
-
+Select DISTINCT m.LastName, m.FirstName, m.MemberID
+from Entry e JOIN Member m
+ON e.MemberID = m.MemberID where EXISTS
+(Select * from Entry e where e.MemberID = m.MemberID AND e.Year = 2013)
+AND EXISTS (Select * from Entry e where e.MemberID = m.MemberID AND e.Year = 2014)
+AND EXISTS (Select * from Entry e where e.MemberID = m.MemberID AND e.Year = 2015);
